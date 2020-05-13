@@ -27,7 +27,7 @@ namespace RemoteDesktopManager
 
         private void RemoteDesktopManagerFrom_Load(object sender, EventArgs e)
         {
-            updateListViewUI();
+            UpdateListViewUI();
 
             // load config.json
             AccountItem[] datas = JSONUtils.Parse(CONFIG_FILENAME);
@@ -44,10 +44,10 @@ namespace RemoteDesktopManager
 
         private void RemoteDesktopManagerFrom_Resize(object sender, EventArgs e)
         {
-            updateListViewUI();
+            UpdateListViewUI();
         }
 
-        private void updateListViewUI()
+        private void UpdateListViewUI()
         {
             columnHeader1.Width = this.Width / 10 * 3;
             columnHeader2.Width = this.Width / 10 * 3;
@@ -70,52 +70,38 @@ namespace RemoteDesktopManager
             form.ShowIcon = false;
             form.Name = string.Format("form_rdp_dlg_{0}",serverIP.Replace(".","_"));
             form.Text = title;
-            // 窗口大小为 1024 * 768
             form.Size = new Size(1024, 768);
             form.Resize += new System.EventHandler(this.RDPForm_Resize);
             form.Closing += new CancelEventHandler(this.RDPForm_Closing);
-            // 获取屏幕尺寸
+
             Rectangle ScreenArea = Screen.PrimaryScreen.Bounds;
-            // 创建RdpClient
             AxMsRdpClient7NotSafeForScripting axMsRdpc = new AxMsRdpClient7NotSafeForScripting();
             ((System.ComponentModel.ISupportInitialize)(axMsRdpc)).BeginInit();
             axMsRdpc.Dock = DockStyle.Fill;
             axMsRdpc.Enabled = true;
             axMsRdpc.Name = string.Format("axMsRdpc_{0}", title);
 
-            // 绑定连接与释放事件
+            // bind rdp connect's events
             axMsRdpc.OnDisconnected += RDC_Event_OnDisconnected;
             axMsRdpc.OnLeaveFullScreenMode += RDC_Event_OnLeaveFullScreenMode;
             axMsRdpc.OnEnterFullScreenMode += RDC_Event_OnEnterFullScreenMode;
 
-            // 将COM组件Rdpc添加到新窗口中
             form.Controls.Add(axMsRdpc);
-            // 打开新窗口
             form.Show();
             ((System.ComponentModel.ISupportInitialize)(axMsRdpc)).EndInit();
 
-            // 服务器地址
             axMsRdpc.Server = serverIP;
-            // 远程登录账号
             axMsRdpc.UserName = loginname;
-            // 远程端口号
             axMsRdpc.AdvancedSettings7.RDPPort = Convert.ToInt32(serverPort);
-            // 自动控制屏幕显示尺寸
             //axMsRdpc.AdvancedSettings9.SmartSizing = true;
-            // 启用CredSSP身份验证（有些服务器连接没有反应，需要开启这个）
             axMsRdpc.AdvancedSettings7.EnableCredSspSupport = true;
-            // 远程登录密码
             axMsRdpc.AdvancedSettings7.ClearTextPassword = password;
-            // 颜色位数 8,16,24,32
             axMsRdpc.ColorDepth = 32;
-            // 开启全屏 true|flase
             axMsRdpc.FullScreen = true;
-            // 设置远程桌面宽度为显示器宽度
             axMsRdpc.DesktopWidth = ScreenArea.Width;
-            // 设置远程桌面宽度为显示器高度
             axMsRdpc.DesktopHeight = ScreenArea.Height;
-            // 远程连接
             axMsRdpc.Connect();
+
             rdp2formMap.Add(axMsRdpc.Name, form);
             form2rdpMap.Add(form.Name, axMsRdpc);
         }
@@ -270,6 +256,15 @@ namespace RemoteDesktopManager
                     }
                 }
                 catch { }
+            }
+        }
+
+        private void popConnectMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count == 1)
+            {
+                RDMListViewItem item = listView1.SelectedItems[0] as RDMListViewItem;
+                connectRemoteDesktop(item.ItemInfo.loginname, item.ItemInfo.password, item.ItemInfo.address, item.ItemInfo.port, item.ItemInfo.accountName);
             }
         }
 
