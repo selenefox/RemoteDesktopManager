@@ -118,18 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="accountToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 21</value>
-  </data>
-  <data name="accountToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Connect</value>
-  </data>
-  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 21</value>
-  </data>
-  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Help</value>
-  </data>
   <data name="createMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
@@ -157,11 +145,23 @@
   <data name="exitMenuItem.Text" xml:space="preserve">
     <value>&amp;Quit</value>
   </data>
+  <data name="accountToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 21</value>
+  </data>
+  <data name="accountToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Connect</value>
+  </data>
   <data name="aboutMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 22</value>
   </data>
   <data name="aboutMenuItem.Text" xml:space="preserve">
     <value>&amp;About</value>
+  </data>
+  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 21</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Help</value>
   </data>
   <data name="columnHeader1.Text" xml:space="preserve">
     <value>Remote Desktop Name</value>
@@ -175,8 +175,11 @@
   <data name="columnHeader4.Text" xml:space="preserve">
     <value>Accout Name</value>
   </data>
-  <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 70</value>
+  <data name="popConnectMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 22</value>
+  </data>
+  <data name="popConnectMenuItem.Text" xml:space="preserve">
+    <value>&amp;Connect</value>
   </data>
   <data name="popEditMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>123, 22</value>
@@ -189,6 +192,9 @@
   </data>
   <data name="popDelMenuItem.Text" xml:space="preserve">
     <value>&amp;Delete</value>
+  </data>
+  <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 70</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1987,7 +1993,16 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Remote Desktop Manager - v1.0.0</value>
   </data>
-  <data name="popConnectMenuItem.Text" xml:space="preserve">
-    <value>&amp;Connect</value>
+  <data name="delete.messagebox.caption" xml:space="preserve">
+    <value>This operation cannot be cancelled. Are you sure to delete the record?</value>
+  </data>
+  <data name="delete.messagebox.title" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="quit.messagebox.cation" xml:space="preserve">
+    <value>There is a remote desktop currently connected. Do you want to close all connections and exit the program?</value>
+  </data>
+  <data name="quit.messagebox.title" xml:space="preserve">
+    <value>Confirm</value>
   </data>
 </root>

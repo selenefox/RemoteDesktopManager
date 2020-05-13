@@ -98,6 +98,7 @@
             // 
             resources.ApplyResources(this.exitMenuItem, "exitMenuItem");
             this.exitMenuItem.Name = "exitMenuItem";
+            this.exitMenuItem.Click += new System.EventHandler(this.exitMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 

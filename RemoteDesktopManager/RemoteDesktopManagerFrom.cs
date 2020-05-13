@@ -6,6 +6,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -20,9 +21,11 @@ namespace RemoteDesktopManager
         private Dictionary<string, Form> rdp2formMap= new Dictionary<string, Form>();
         private Dictionary<string, AxMsRdpClient7NotSafeForScripting> form2rdpMap = new Dictionary<string, AxMsRdpClient7NotSafeForScripting>();
 
+        private ResourceManager resManager;
         public RemoteDesktopManagerFrom()
         {
             InitializeComponent();
+            resManager = new ResourceManager("RemoteDesktopManager.RemoteDesktopManagerFrom", typeof(RemoteDesktopManagerFrom).Assembly);
         }
 
         private void RemoteDesktopManagerFrom_Load(object sender, EventArgs e)
@@ -247,7 +250,7 @@ namespace RemoteDesktopManager
                     RDMListViewItem listViewItem = listView1.SelectedItems[0] as RDMListViewItem;
                     AccountItem itemData = dataList[listViewItem.Index];
 
-                    var re = MessageBox.Show("此操作不可撤销，是否确认删除该记录？", "删除确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    var re = MessageBox.Show(resManager.GetString("delete.messagebox.caption"), resManager.GetString("delete.messagebox.title"), MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if(re == DialogResult.Yes)
                     {
                         dataList.Remove(itemData);
@@ -272,7 +275,7 @@ namespace RemoteDesktopManager
         {
             if(form2rdpMap.Count > 0)
             {
-                var re = MessageBox.Show("当前有连接中的远程桌面，是否关闭全部连接并退出程序？", "退出确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var re = MessageBox.Show(resManager.GetString("quit.messagebox.cation"), resManager.GetString("quit.messagebox.title"), MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if(re == DialogResult.Yes)
                 {
                     foreach (KeyValuePair<string, AxMsRdpClient7NotSafeForScripting> kv in form2rdpMap)
@@ -285,6 +288,11 @@ namespace RemoteDesktopManager
                     e.Cancel = true;
                 }
             }
+        }
+
+        private void exitMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 
