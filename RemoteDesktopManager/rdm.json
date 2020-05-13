@@ -1,0 +1,16 @@
+﻿[
+    {
+        "accountName": "Office-AU-电脑",
+        "address": "192.168.1.1",
+        "port": 3389,
+        "loginname": "username",
+        "password": "password"
+    },
+    {
+        "accountName": "Office-AU-电脑2",
+        "address": "192.168.1.2",
+        "port": 3389,
+        "loginname": "username",
+        "password": "password"
+    }
+]
