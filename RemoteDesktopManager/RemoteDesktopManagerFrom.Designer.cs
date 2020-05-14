@@ -111,6 +111,7 @@
             // 
             resources.ApplyResources(this.aboutMenuItem, "aboutMenuItem");
             this.aboutMenuItem.Name = "aboutMenuItem";
+            this.aboutMenuItem.Click += new System.EventHandler(this.aboutMenuItem_Click);
             // 
             // listView1
             // 

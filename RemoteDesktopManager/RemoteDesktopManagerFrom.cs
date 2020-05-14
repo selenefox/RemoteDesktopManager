@@ -294,6 +294,12 @@ namespace RemoteDesktopManager
         {
             this.Close();
         }
+
+        private void aboutMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutForm aboutForm = new AboutForm();
+            aboutForm.ShowDialog();
+        }
     }
 
     public class RDMListViewItem: ListViewItem
