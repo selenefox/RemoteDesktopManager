@@ -71,7 +71,7 @@ namespace RemoteDesktopManager
         {
             Form form = new Form();
             form.ShowIcon = false;
-            form.Name = string.Format("form_rdp_dlg_{0}",serverIP.Replace(".","_"));
+            form.Name = string.Format("form_rdp_{0}_{1}",serverIP.Replace(".","_"), DateTime.Now.Second.ToString());
             form.Text = title;
             form.Size = new Size(1024, 768);
             form.Resize += new System.EventHandler(this.RDPForm_Resize);
@@ -82,7 +82,7 @@ namespace RemoteDesktopManager
             ((System.ComponentModel.ISupportInitialize)(axMsRdpc)).BeginInit();
             axMsRdpc.Dock = DockStyle.Fill;
             axMsRdpc.Enabled = true;
-            axMsRdpc.Name = string.Format("axMsRdpc_{0}", title);
+            axMsRdpc.Name = string.Format("axMsRdpc_{0}_{1}", serverIP.Replace(".", "_"), DateTime.Now.Second.ToString());
 
             // bind rdp connect's events
             axMsRdpc.OnDisconnected += RDC_Event_OnDisconnected;
