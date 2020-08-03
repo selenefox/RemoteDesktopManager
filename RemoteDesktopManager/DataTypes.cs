@@ -75,5 +75,7 @@ namespace RemoteDesktopManager
         public string loginname;
         [JsonProperty("password")]
         public string password;
+        [JsonProperty("useMultimon")]
+        public bool useMultimon;
     }
 }

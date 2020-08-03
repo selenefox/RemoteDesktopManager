@@ -157,4 +157,7 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Remote Desktop Config</value>
   </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Use Multimon:</value>
+  </data>
 </root>

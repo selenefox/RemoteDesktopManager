@@ -107,6 +107,9 @@
     <EmbeddedResource Include="ConnectConfigForm.zh-CN.resx">
       <DependentUpon>ConnectConfigForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ConnectConfigForm.zh.resx">
+      <DependentUpon>ConnectConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

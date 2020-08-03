@@ -1,4 +1,5 @@
 ﻿using AxMSTSCLib;
+using MSTSCLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -63,11 +64,11 @@ namespace RemoteDesktopManager
             if(listView1.SelectedItems.Count == 1)
             {
                 RDMListViewItem item = listView1.SelectedItems[0] as RDMListViewItem;
-                connectRemoteDesktop(item.ItemInfo.loginname, item.ItemInfo.password, item.ItemInfo.address, item.ItemInfo.port, item.ItemInfo.accountName);
+                connectRemoteDesktop(item.ItemInfo.loginname, item.ItemInfo.password, item.ItemInfo.address, item.ItemInfo.port, item.ItemInfo.accountName, item.ItemInfo.useMultimon);
             }
         }
 
-        private void connectRemoteDesktop(string loginname, string password, string serverIP, int serverPort = 3389, string title = "")
+        private void connectRemoteDesktop(string loginname, string password, string serverIP, int serverPort = 3389, string title = "", bool useMultimon = false)
         {
             Form form = new Form();
             form.ShowIcon = false;
@@ -77,7 +78,34 @@ namespace RemoteDesktopManager
             form.Resize += new System.EventHandler(this.RDPForm_Resize);
             form.Closing += new CancelEventHandler(this.RDPForm_Closing);
 
-            Rectangle ScreenArea = Screen.PrimaryScreen.Bounds;
+            Rectangle ScreenArea;
+            if(Screen.AllScreens.Length > 1)
+            {
+                Trace.TraceInformation("Screen Count = {0}", Screen.AllScreens.Length);
+                Screen scr = null;
+                for ( int i=0;i< Screen.AllScreens.Length;i++ )
+                {
+                    scr = Screen.AllScreens[i];
+                    Trace.TraceInformation("Screen[{0}]:Primary = {1}", i, scr.Primary);
+                    if (scr.Primary)
+                    {
+                        break;
+                    }
+                }
+                if(scr != null)
+                {
+                    ScreenArea = scr.Bounds;
+                    Trace.TraceInformation("set ScreenArea:width={0} , height={1}", ScreenArea.Width, ScreenArea.Height);
+                }
+                else
+                {
+                    ScreenArea = Screen.PrimaryScreen.Bounds;
+                }
+            }
+            else
+            {
+                ScreenArea = Screen.PrimaryScreen.Bounds;
+            }
             AxMsRdpClient7NotSafeForScripting axMsRdpc = new AxMsRdpClient7NotSafeForScripting();
             ((System.ComponentModel.ISupportInitialize)(axMsRdpc)).BeginInit();
             axMsRdpc.Dock = DockStyle.Fill;
@@ -93,16 +121,24 @@ namespace RemoteDesktopManager
             form.Show();
             ((System.ComponentModel.ISupportInitialize)(axMsRdpc)).EndInit();
 
+            IMsRdpClientNonScriptable5 sc = (IMsRdpClientNonScriptable5)axMsRdpc.GetOcx();
+            sc.UseMultimon = useMultimon;
+
             axMsRdpc.Server = serverIP;
             axMsRdpc.UserName = loginname;
             axMsRdpc.AdvancedSettings7.RDPPort = Convert.ToInt32(serverPort);
-            //axMsRdpc.AdvancedSettings9.SmartSizing = true;
             axMsRdpc.AdvancedSettings7.EnableCredSspSupport = true;
             axMsRdpc.AdvancedSettings7.ClearTextPassword = password;
+            axMsRdpc.AdvancedSettings7.Compress = 1;
+            //axMsRdpc.AdvancedSettings7.SmartSizing = true; //自动缩放图像
+            axMsRdpc.AdvancedSettings7.ContainerHandledFullScreen = 0;
+
             axMsRdpc.ColorDepth = 32;
             axMsRdpc.FullScreen = true;
+            Trace.TraceInformation("ScreenArea:width={0} , height={1}", ScreenArea.Width, ScreenArea.Height);
             axMsRdpc.DesktopWidth = ScreenArea.Width;
             axMsRdpc.DesktopHeight = ScreenArea.Height;
+
             axMsRdpc.Connect();
 
             rdp2formMap.Add(axMsRdpc.Name, form);
@@ -165,8 +201,6 @@ namespace RemoteDesktopManager
             {
                 if (ThisForm.WindowState == FormWindowState.Maximized)
                 {
-
-                    form2rdpMap[ThisForm.Name].FullScreen = false;
                     form2rdpMap[ThisForm.Name].FullScreen = true;
                 }
                 else if (ThisForm.WindowState == FormWindowState.Normal)

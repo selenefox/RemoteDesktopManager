@@ -32,6 +32,7 @@ namespace RemoteDesktopManager
             textBox3.Text = Convert.ToString(ItemInfo.port);
             textBox4.Text = ItemInfo.loginname;
             textBox5.Text = ItemInfo.password;
+            checkBox1.Checked = ItemInfo.useMultimon;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -41,6 +42,7 @@ namespace RemoteDesktopManager
             ItemInfo.port = Convert.ToInt32(textBox3.Text);
             ItemInfo.loginname = textBox4.Text;
             ItemInfo.password = textBox5.Text;
+            ItemInfo.useMultimon = checkBox1.Checked;
             DialogResult = DialogResult.OK;
         }
 

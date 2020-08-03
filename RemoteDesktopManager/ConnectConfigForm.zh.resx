@@ -118,52 +118,17 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>247, 169</value>
+  <data name="textBox6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>72, 89</value>
   </data>
-  <data name="button1.Text" xml:space="preserve">
-    <value>保存</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="textBox6.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
+    <value>*</value>
   </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 12</value>
+  <data name="textBox6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>274, 21</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>连接名称：</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 12</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>服务器地址：</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 12</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>服务器端口：</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 12</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>登录名：</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 12</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>登陆密码：</value>
-  </data>
-  <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>328, 169</value>
-  </data>
-  <data name="button2.Text" xml:space="preserve">
-    <value>关闭</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>连接配置</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>映射多屏幕：</value>
+  <data name="textBox6.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
   </data>
 </root>
