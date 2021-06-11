@@ -48,6 +48,8 @@
             this.popConnectMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.popEditMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.popDelMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.moveUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.downToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -55,6 +57,7 @@
             // menuStrip1
             // 
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.accountToolStripMenuItem,
             this.helpToolStripMenuItem});
@@ -124,11 +127,15 @@
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.HideSelection = false;
+            this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.listView1_ItemDrag);
+            this.listView1.ItemMouseHover += new System.Windows.Forms.ListViewItemMouseHoverEventHandler(this.listView1_ItemMouseHover);
             this.listView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseDoubleClick);
             this.listView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseDown);
+            this.listView1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseUp);
             // 
             // columnHeader1
             // 
@@ -149,10 +156,13 @@
             // contextMenuStrip1
             // 
             resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.popConnectMenuItem,
             this.popEditMenuItem,
-            this.popDelMenuItem});
+            this.popDelMenuItem,
+            this.moveUpToolStripMenuItem,
+            this.downToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             // 
             // popConnectMenuItem
@@ -172,6 +182,18 @@
             resources.ApplyResources(this.popDelMenuItem, "popDelMenuItem");
             this.popDelMenuItem.Name = "popDelMenuItem";
             this.popDelMenuItem.Click += new System.EventHandler(this.deleteMenuItem_Click);
+            // 
+            // moveUpToolStripMenuItem
+            // 
+            resources.ApplyResources(this.moveUpToolStripMenuItem, "moveUpToolStripMenuItem");
+            this.moveUpToolStripMenuItem.Name = "moveUpToolStripMenuItem";
+            this.moveUpToolStripMenuItem.Click += new System.EventHandler(this.moveUpToolStripMenuItem_Click);
+            // 
+            // downToolStripMenuItem
+            // 
+            resources.ApplyResources(this.downToolStripMenuItem, "downToolStripMenuItem");
+            this.downToolStripMenuItem.Name = "downToolStripMenuItem";
+            this.downToolStripMenuItem.Click += new System.EventHandler(this.downToolStripMenuItem_Click);
             // 
             // RemoteDesktopManagerFrom
             // 
@@ -212,6 +234,8 @@
         private System.Windows.Forms.ToolStripMenuItem popEditMenuItem;
         private System.Windows.Forms.ToolStripMenuItem popDelMenuItem;
         private System.Windows.Forms.ToolStripMenuItem popConnectMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem moveUpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem downToolStripMenuItem;
     }
 }
 

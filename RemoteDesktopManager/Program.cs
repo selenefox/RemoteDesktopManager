@@ -15,7 +15,7 @@ namespace RemoteDesktopManager
         [STAThread]
         static void Main()
         {
-            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("zh-CN");
+            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new RemoteDesktopManagerFrom());

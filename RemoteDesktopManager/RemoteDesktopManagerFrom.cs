@@ -18,6 +18,7 @@ namespace RemoteDesktopManager
     public partial class RemoteDesktopManagerFrom : Form
     {
         private static string CONFIG_FILENAME = "rdm.json";
+        // this list is all account datas 
         private List<AccountItem> dataList = new List<AccountItem>();
         private Dictionary<string, Form> rdp2formMap= new Dictionary<string, Form>();
         private Dictionary<string, AxMsRdpClient7NotSafeForScripting> form2rdpMap = new Dictionary<string, AxMsRdpClient7NotSafeForScripting>();
@@ -333,6 +334,92 @@ namespace RemoteDesktopManager
         {
             AboutForm aboutForm = new AboutForm();
             aboutForm.ShowDialog();
+        }
+
+        private void moveUpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count == 1)
+            {
+                ListViewItem indexItem = listView1.SelectedItems[0];
+                int index = indexItem.Index;
+                if (index > 0)
+                {
+                    this.listView1.Items.RemoveAt(index);
+                    this.listView1.Items.Insert(index - 1, indexItem);
+                    RefreshDataList();
+                    JSONUtils.Write(dataList.ToArray(), CONFIG_FILENAME);
+                }
+            }
+        }
+
+        private void downToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count == 1)
+            {
+                ListViewItem indexItem = listView1.SelectedItems[0];
+                int index = indexItem.Index;
+                if (index < listView1.Items.Count - 1)
+                {
+                    this.listView1.Items.RemoveAt(index);
+                    this.listView1.Items.Insert(index + 1, indexItem);
+                    RefreshDataList();
+                    JSONUtils.Write(dataList.ToArray(), CONFIG_FILENAME);
+                }
+            }
+        }
+        private RDMListViewItem itemDraged = null;
+        private ListViewItem itemSelected = null;
+        private bool isDrag = false;
+        private void listView1_ItemDrag(object sender, ItemDragEventArgs e)
+        {
+            itemDraged = (RDMListViewItem)e.Item;
+            this.Cursor = Cursors.Hand;
+            isDrag = true;
+        }
+
+        private void listView1_ItemMouseHover(object sender, ListViewItemMouseHoverEventArgs e)
+        {
+            itemSelected = e.Item;
+            if (isDrag)
+            {
+                e.Item.Selected = true;
+            }
+            else
+            {
+                e.Item.Selected = false;
+            }
+        }
+
+        private void listView1_MouseUp(object sender, MouseEventArgs e)
+        {
+            isDrag = false;
+            if ((this.itemSelected != null) && (this.itemDraged != null))
+            {
+                if (this.itemDraged.Index != this.itemSelected.Index)
+                {
+                    this.listView1.Items.RemoveAt(this.itemDraged.Index);
+                    this.listView1.Items.Insert(this.itemSelected.Index, this.itemDraged);
+                    this.itemDraged = null;
+                    this.itemSelected = null;
+                    RefreshDataList();
+                    JSONUtils.Write(dataList.ToArray(), CONFIG_FILENAME);
+                }
+            }
+            this.Cursor = Cursors.Default;
+        }
+
+        private void RefreshDataList()
+        {
+            dataList.Clear();
+            if (this.listView1.Items.Count > 0)
+            {
+                RDMListViewItem item;
+                for (int i=0;i< this.listView1.Items.Count; i++)
+                {
+                    item = this.listView1.Items[i] as RDMListViewItem;
+                    dataList.Add(item.ItemInfo);
+                }
+            }
         }
     }
 

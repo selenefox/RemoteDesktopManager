@@ -119,49 +119,52 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="createMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 22</value>
+    <value>177, 26</value>
   </data>
   <data name="createMenuItem.Text" xml:space="preserve">
     <value>新增连接(&amp;A)</value>
   </data>
   <data name="editMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 22</value>
+    <value>177, 26</value>
   </data>
   <data name="editMenuItem.Text" xml:space="preserve">
     <value>编辑连接(&amp;E)</value>
   </data>
   <data name="deleteMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 22</value>
+    <value>177, 26</value>
   </data>
   <data name="deleteMenuItem.Text" xml:space="preserve">
     <value>删除连接(&amp;D)</value>
   </data>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 6</value>
+    <value>174, 6</value>
   </data>
   <data name="exitMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 22</value>
+    <value>177, 26</value>
   </data>
   <data name="exitMenuItem.Text" xml:space="preserve">
     <value>退出(&amp;Q)</value>
   </data>
   <data name="accountToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 21</value>
+    <value>106, 24</value>
   </data>
   <data name="accountToolStripMenuItem.Text" xml:space="preserve">
     <value>连接管理(&amp;C)</value>
   </data>
   <data name="aboutMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 22</value>
+    <value>144, 26</value>
   </data>
   <data name="aboutMenuItem.Text" xml:space="preserve">
     <value>关于(&amp;A)</value>
   </data>
   <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 21</value>
+    <value>76, 24</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
     <value>帮助(&amp;H)</value>
+  </data>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1067, 28</value>
   </data>
   <data name="columnHeader1.Text" xml:space="preserve">
     <value>连接名称</value>
@@ -175,26 +178,44 @@
   <data name="columnHeader4.Text" xml:space="preserve">
     <value>登陆名</value>
   </data>
+  <data name="listView1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 28</value>
+  </data>
+  <data name="listView1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1067, 534</value>
+  </data>
   <data name="popConnectMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 22</value>
+    <value>210, 24</value>
   </data>
   <data name="popConnectMenuItem.Text" xml:space="preserve">
     <value>连接远程桌面</value>
   </data>
   <data name="popEditMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 22</value>
+    <value>210, 24</value>
   </data>
   <data name="popEditMenuItem.Text" xml:space="preserve">
     <value>编辑连接</value>
   </data>
   <data name="popDelMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 22</value>
+    <value>210, 24</value>
   </data>
   <data name="popDelMenuItem.Text" xml:space="preserve">
     <value>删除连接</value>
   </data>
+  <data name="moveUpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 24</value>
+  </data>
+  <data name="moveUpToolStripMenuItem.Text" xml:space="preserve">
+    <value>上移</value>
+  </data>
+  <data name="downToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 24</value>
+  </data>
+  <data name="downToolStripMenuItem.Text" xml:space="preserve">
+    <value>下移</value>
+  </data>
   <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 70</value>
+    <value>211, 152</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1992,17 +2013,5 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>远程桌面账号管理工具 - v1.0.0</value>
-  </data>
-  <data name="delete.messagebox.caption" xml:space="preserve">
-    <value>此操作不可撤销，是否确认删除该记录？</value>
-  </data>
-  <data name="delete.messagebox.title" xml:space="preserve">
-    <value>删除确认</value>
-  </data>
-  <data name="quit.messagebox.cation" xml:space="preserve">
-    <value>当前有连接中的远程桌面，是否关闭全部连接并退出程序？</value>
-  </data>
-  <data name="quit.messagebox.title" xml:space="preserve">
-    <value>退出确认</value>
   </data>
 </root>
