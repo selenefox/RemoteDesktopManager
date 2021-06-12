@@ -2018,4 +2018,16 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Remote Desktop Manager - v1.0.0</value>
   </data>
+  <data name="delete.messagebox.caption" xml:space="preserve">
+    <value>Are you sure you want to delete the account?</value>
+  </data>
+  <data name="delete.messagebox.title" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="quit.messagebox.cation" xml:space="preserve">
+    <value>Are you really logged out, and there are still unclosed sessions in connecting?</value>
+  </data>
+  <data name="quit.messagebox.title" xml:space="preserve">
+    <value>Quite</value>
+  </data>
 </root>
